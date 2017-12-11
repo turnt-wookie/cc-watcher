@@ -18,8 +18,17 @@
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Aulas</a>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="roomsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Aulas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="roomsDropdown">
+            <a href="#" class="dropdown-item">CC1</a>
+            <a href="#" class="dropdown-item">CC2</a>
+            <a href="#" class="dropdown-item">CC3</a>
+            <a href="#" class="dropdown-item">CC4</a>
+            <a href="#" class="dropdown-item">CC5</a>
+          </div>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
