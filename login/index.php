@@ -1,3 +1,30 @@
+<?php 
+session_start();
+
+include './LdapHandler.php';
+  $error = false;
+
+if(isset($_POST['inetUsername']) && isset($_POST['inetPassword'])) {
+
+
+
+  $user = $_POST['inetUsername'];
+  $pass = $_POST['inetPassword'];
+
+  $result = LdapHandler.validateUser($user, $pass);
+
+  if($result == 'invalid_user') $error = true;
+  if($result == 'incorrect_user') $error = true;
+  if($result == 'ldap_error') $error = true;
+
+  if(!$error) {
+    $_SESSION["name"] = $result;
+    header('Location: /rooms/index.php');
+  }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +41,23 @@
     <h1 class="text-center">CC Watcher</h1>  
     <div class="row mt-5 justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-4">
-        <form>
+        <?php if($error): ?>
+        <div class="alert alert-danger" role="alert">
+          <strong>ERROR</strong>
+          <?php if($result == 'invalid_user') echo 'Usuario Invalido' ?>
+          <?php if($result == 'incorrect_user') echo 'Usuario Incorrecto' ?>
+          <?php if($result == 'ldap_error') echo 'Conexion con directorio activo' ?>
+        </div>
+        <?php endif ?>
+        <form method="POST", action="/login/action.php">
           <div class="form-group">
             <label for="inetUsername">Usuario</label>
-            <input type="text" class="form-control" id="inetUsername" aria-describedby="inetHelp">
+            <input type="text" class="form-control" name="inetUsername" id="inetUsername" aria-describedby="inetHelp" value="<?php echo (isset($_POST['inetUsername']) ? $_POST['inetUsername'] : ''); ?>">
             <small id="inetHelp" class="form-text text-muted">Inicia sesión con tu usuario en el directorio activo (INET).</small>
           </div>
           <div class="form-group">
             <label for="inetPassword">Contraseña</label>
-            <input type="password" class="form-control" id="inetPassword">
+            <input type="password" class="form-control" name="inetPassword" id="inetPassword">
           </div>
           <div class="row justify-content-center">
             <div class="col-sm-6">
