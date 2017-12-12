@@ -2,8 +2,9 @@
 
 class LdapHandler {
 
-    public static function validateUser($user, $pass) {
+    public static function validateUser($user, $pass, $test = false) {
 
+        if($test) return "Juan Pablo";
         $ldap_con = ldap_connect('148.209.67.42', 389)
         or die('Could not connect to LDAP server.');
 

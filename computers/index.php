@@ -33,9 +33,11 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Cerrar Sesión</button>
-      </form>
+      <div class="text-light mr-3">Hola <i><?php echo$_SESSION['name'] ?></i></div>
+
+      <div class="form-inline my-2 my-lg-0">
+        <a class="btn btn-outline-light my-2 my-sm-0" href="/login/session_close.php">Cerrar Sesión</a>
+      </div>
     </div>
   </nav>
 
