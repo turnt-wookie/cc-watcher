@@ -49,7 +49,7 @@ if(isset($_POST['inetUsername']) && isset($_POST['inetPassword'])) {
           <?php if($result == 'ldap_error') echo 'Conexion con directorio activo' ?>
         </div>
         <?php endif ?>
-        <form method="POST", action="/login/action.php">
+        <form method="POST", action="<?php echo $_SERVER['PHP_SELF']; ?>">
           <div class="form-group">
             <label for="inetUsername">Usuario</label>
             <input type="text" class="form-control" name="inetUsername" id="inetUsername" aria-describedby="inetHelp" value="<?php echo (isset($_POST['inetUsername']) ? $_POST['inetUsername'] : ''); ?>">
