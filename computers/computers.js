@@ -133,9 +133,9 @@ let appendRoomToRow = (room, row) => {
                 <h6 class="card-title">${computer.key}</h6>
                 <h6>${span}</h6>
               </div>
-              <div class="card-footer">
+              <!--div class="card-footer">
                 <a href="/reserve" class="btn btn-primary btn-sm ${btnStatus}">Reservar</a>
-              </div>
+              </div-->
             </div>
           </div>
         `)
